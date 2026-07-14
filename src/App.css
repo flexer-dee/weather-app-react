@@ -119,7 +119,6 @@ main {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
-
 /* =========================================
    LANDING PAGE WELCOME TEXT
    ========================================= */
@@ -140,14 +139,6 @@ main {
   opacity: 0.95;
 }
 
-/* =========================================
-   WEATHER DISPLAY (Placeholder for API Data)
-   ========================================= */
-.weather-display {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /* =========================================
    LIVE WEATHER DATA DISPLAY
    ========================================= */
@@ -180,7 +171,6 @@ main {
   font-weight: 300;
   text-align: center;
   font-style: italic;
-  font-weight: 300;
   text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
 
@@ -225,7 +215,7 @@ main {
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }
 
-/* --- NEW: Extra Details Panel --- */
+/* --- Extra Details Panel --- */
 .extra-details {
   display: flex;
   justify-content: space-around;
@@ -255,4 +245,66 @@ main {
 
 .detail strong {
   font-size: 1.2rem;
+}
+
+/* =========================================
+   SAVED CITIES & UI EXTRAS
+   ========================================= */
+.saved-cities-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 500px;
+  margin: -30px auto 30px auto; /* Pulls it up closer to the search bar */
+}
+
+.saved-city-pill {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.saved-city-pill span {
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+.saved-city-pill span:hover {
+  text-decoration: underline;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.delete-btn:hover {
+  opacity: 1;
+  color: #ff4d4d;
+}
+
+.save-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: transform 0.2s;
+}
+
+.save-btn:hover {
+  transform: scale(1.2);
 }
