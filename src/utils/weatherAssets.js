@@ -1,13 +1,25 @@
 // src/utils/weatherAssets.js
 
 // 1. Translates the current month into a season
-export const getSeason = () => {
+// src/utils/weatherAssets.js
+
+export const getSeason = (lat = 0) => {
   const month = new Date().getMonth(); // Returns 0 for Jan, 11 for Dec
-  
-  if (month >= 2 && month <= 4) return 'spring';
-  if (month >= 5 && month <= 7) return 'summer';
-  if (month >= 8 && month <= 10) return 'autumn';
-  return 'winter';
+  const isNorthernHemisphere = lat >= 0;
+
+  if (isNorthernHemisphere) {
+    // Northern Hemisphere Seasons
+    if (month >= 2 && month <= 4) return 'spring';
+    if (month >= 5 && month <= 7) return 'summer';
+    if (month >= 8 && month <= 10) return 'autumn';
+    return 'winter';
+  } else {
+    // Southern Hemisphere Seasons (Inverted)
+    if (month >= 2 && month <= 4) return 'autumn';
+    if (month >= 5 && month <= 7) return 'winter';
+    if (month >= 8 && month <= 10) return 'spring';
+    return 'summer';
+  }
 };
 
 // 2. Translates OpenWeatherMap API codes into our CSS class names

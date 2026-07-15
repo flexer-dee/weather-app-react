@@ -9,6 +9,9 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  /* Adds a smoother rendering engine for fonts on MacOS/Windows */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =========================================
@@ -16,13 +19,11 @@ body {
    ========================================= */
 .app {
   min-height: 100vh;
-  /* These three lines are the magic fix */
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; 
   background-repeat: no-repeat;
-  
-  transition: background-image 0.5s ease-in-out;
+  transition: background-image 0.8s ease-in-out; /* Slowed down slightly for elegance */
 }
 
 /* Landing */
@@ -53,10 +54,8 @@ body {
    ========================================= */
 main {
   min-height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
-  padding: 25px;
-  
-  /* Centers the content and prevents awkward scrolling */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+  padding: 40px 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,25 +67,30 @@ main {
 .toggle-container {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .toggle-btn {
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
   color: #fff;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px); /* Creates a cool frosted glass effect */
+  backdrop-filter: blur(10px);
 }
 
 .toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* =========================================
@@ -94,157 +98,34 @@ main {
    ========================================= */
 .search-box {
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto 50px;
+  max-width: 600px;
+  margin: 0 auto 30px;
 }
 
 .search-box .search-bar {
   display: block;
   width: 100%;
-  padding: 15px;
+  padding: 18px 25px;
   appearance: none;
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   outline: none;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px 0px 16px 16px;
-  margin-top: -25px;
-  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
-  color: #313131;
-  font-size: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-size: 1.1rem;
   transition: 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-box .search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .search-box .search-bar:focus {
-  background-color: rgba(255, 255, 255, 0.75);
-}
-
-/* =========================================
-   LANDING PAGE WELCOME TEXT
-   ========================================= */
-.landing-welcome {
-  text-align: center;
-  color: white;
-  margin-top: 15vh;
-  text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
-}
-
-.landing-welcome h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
-
-.landing-welcome p {
-  font-size: 1.3rem;
-  opacity: 0.95;
-}
-
-/* =========================================
-   LIVE WEATHER DATA DISPLAY
-   ========================================= */
-.weather-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  width: 100%;
-}
-
-.location-box {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.location-box .location {
-  color: #fff;
-  font-size: 32px;
-  font-weight: 500;
-  text-align: center;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-  margin-bottom: 5px;
-}
-
-.location-box .date {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
-  text-align: center;
-  font-style: italic;
-  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
-}
-
-.weather-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px; /* This specifically prevents the overlap! */
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 30px 40px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  width: 100%;
-  max-width: 400px;
-}
-
-.weather-box .temp {
-  position: relative;
-  display: inline-block;
-  margin: 30px auto;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 15px 25px;
-  color: #fff;
-
-  font-size: 102px;
-  font-weight: 900;
-  line-height: 1; /* Stops the text box from overflowing downward */
-  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
-  text-align: center;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.weather-box .weather-condition {
-  color: #fff;
-  font-size: 48px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-}
-
-/* --- Extra Details Panel --- */
-.extra-details {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 15px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.detail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.detail span {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.9;
-}
-
-.detail strong {
-  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================================
@@ -255,56 +136,300 @@ main {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  max-width: 500px;
-  margin: -30px auto 30px auto; /* Pulls it up closer to the search bar */
+  max-width: 600px;
+  margin: -15px auto 40px auto;
 }
 
 .saved-city-pill {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 5px 15px;
+  padding: 6px 16px;
   color: white;
-  font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.saved-city-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .saved-city-pill span {
   cursor: pointer;
-  padding-right: 10px;
-}
-
-.saved-city-pill span:hover {
-  text-decoration: underline;
+  padding-right: 12px;
 }
 
 .delete-btn {
   background: none;
   border: none;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 1.2rem;
-  font-weight: bold;
   cursor: pointer;
-  opacity: 0.7;
+  transition: color 0.2s;
 }
 
 .delete-btn:hover {
-  opacity: 1;
-  color: #ff4d4d;
+  color: #ff6b6b;
+}
+
+/* =========================================
+   LANDING PAGE WELCOME TEXT
+   ========================================= */
+.landing-welcome {
+  text-align: center;
+  color: white;
+  margin-top: 10vh;
+}
+
+.landing-welcome h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.landing-welcome p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* =========================================
+   LIVE WEATHER DATA DISPLAY
+   ========================================= */
+.weather-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.location-box {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.location-box .location {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
 .save-btn {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  margin-left: 10px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, filter 0.2s;
+  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
 }
 
 .save-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+}
+
+.location-box .date {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+/* =========================================
+   MAIN TEMPERATURE WIDGET
+   ========================================= */
+.weather-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 20px;
+}
+
+.weather-box .temp {
+  color: #fff;
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+  margin-bottom: 10px;
+}
+
+.weather-box .weather-condition {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   EXTRA DETAILS PANEL
+   ========================================= */
+.extra-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+.detail span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+}
+
+.detail strong {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* =========================================
+   PHASE 2: ALERTS & CHARTS
+   ========================================= */
+.alert-banner {
+  background-color: rgba(239, 68, 68, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 25px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.chart-container h3 {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 220px;
+}
+
+/* Custom Recharts Tooltip */
+.custom-tooltip {
+  background: rgba(25, 25, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.custom-tooltip .label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.custom-tooltip .temp {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 600px) {
+  /* Scale down the landing page text */
+  .landing-welcome h1 {
+    font-size: 2.2rem;
+  }
+
+  .landing-welcome p {
+    font-size: 1rem;
+  }
+
+  /* Scale down the massive temperature text */
+  .weather-box .temp {
+    font-size: 4rem;
+  }
+
+  .weather-box {
+    padding: 25px 20px;
+  }
+
+  .weather-box .weather-condition {
+    font-size: 1.2rem;
+  }
+
+  /* Shrink the search bar slightly */
+  .search-box .search-bar {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+
+  /* Make the saved cities slightly smaller */
+  .saved-city-pill {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
 }
