@@ -45,7 +45,7 @@ You will need Node.js and Yarn installed on your machine. You will also need a f
    VITE_WEATHER_API_KEY=your_actual_api_key_here
 
 3. **Start the developmemnt server**
-   '''bash
+   ```bash
    yarn dev
 
 4. **Open the app:**
